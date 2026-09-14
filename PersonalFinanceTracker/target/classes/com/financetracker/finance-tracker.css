@@ -1,0 +1,134 @@
+.app-root {
+    -fx-background-color: #f5f6f8;
+    -fx-font-family: "Arial";
+}
+
+.header {
+    -fx-background-color: #171717;
+    -fx-padding: 20 24 20 24;
+}
+
+.header .title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.subtitle {
+    -fx-text-fill: #cfcfcf;
+    -fx-font-size: 13px;
+}
+
+.summary-card,
+.content-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #e1e3e6;
+    -fx-border-radius: 10;
+    -fx-padding: 16;
+}
+
+.card-label {
+    -fx-text-fill: #666666;
+    -fx-font-size: 13px;
+}
+
+.card-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.balance-value {
+    -fx-text-fill: #171717;
+}
+
+.income-value {
+    -fx-text-fill: #24824a;
+}
+
+.expense-value {
+    -fx-text-fill: #b64a3c;
+}
+
+.label {
+    -fx-text-fill: #222222;
+}
+
+.text-field,
+.combo-box,
+.date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #cfd3d8;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6;
+}
+
+.primary-button {
+    -fx-background-color: #171717;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 9 16 9 16;
+}
+
+.primary-button:hover {
+    -fx-background-color: #303030;
+}
+
+.secondary-button {
+    -fx-background-color: #eeeeee;
+    -fx-text-fill: #222222;
+    -fx-background-radius: 6;
+    -fx-padding: 8 14 8 14;
+}
+
+.status-label {
+    -fx-text-fill: #666666;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #e8eaed;
+    -fx-background-radius: 7 7 0 0;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: white;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #e1e3e6;
+    -fx-border-radius: 6;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f1f2f4;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+}
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.category-row {
+    -fx-padding: 10 4 10 4;
+    -fx-border-color: transparent transparent #eeeeee transparent;
+}
+
+.category-amount {
+    -fx-font-weight: bold;
+}
+
+.muted-text {
+    -fx-text-fill: #777777;
+}
