@@ -33,3 +33,6 @@ To run the console version:
 ```bash
 mvn compile exec:java
 ```
+## Screenshot
+
+<img width="1048" height="780" alt="FinanceTracker" src="https://github.com/user-attachments/assets/4b649464-908f-4e4c-afd8-86b5d90b529b" />
