@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
 
+// Runs the JavaFX version of the personal finance tracker.
 public class FinanceTrackerFxApp extends Application {
 
     private static final String DATA_FILE = "data/transactions.csv";
@@ -32,6 +33,7 @@ public class FinanceTrackerFxApp extends Application {
     private final VBox categoryBox = new VBox(8);
 
     @Override
+    // Builds and displays the main application window.
     public void start(Stage stage) {
         loadData();
 
@@ -54,6 +56,7 @@ public class FinanceTrackerFxApp extends Application {
         refreshAll();
     }
 
+    // Creates the title area at the top of the app.
     private VBox buildHeader() {
         Label title = new Label("Personal Finance Tracker");
         title.getStyleClass().add("title");
@@ -63,6 +66,7 @@ public class FinanceTrackerFxApp extends Application {
         return header;
     }
 
+    // Creates the summary cards and main tabs.
     private VBox buildContent() {
         HBox summaryCards = new HBox(14,
                 createSummaryCard("Balance", balanceValue, "balance-value"),
@@ -85,6 +89,7 @@ public class FinanceTrackerFxApp extends Application {
         return content;
     }
 
+    // Creates one summary card for balance, income, or expenses.
     private VBox createSummaryCard(String heading, Label value, String valueStyle) {
         Label label = new Label(heading);
         label.getStyleClass().add("card-label");
@@ -96,6 +101,7 @@ public class FinanceTrackerFxApp extends Application {
         return card;
     }
 
+    // Creates the transaction form and transaction table.
     private VBox buildTransactionsTab() {
         TextField descriptionField = new TextField();
         descriptionField.setPromptText("Description");
@@ -202,6 +208,7 @@ public class FinanceTrackerFxApp extends Application {
         return tab;
     }
 
+    // Creates the spending summary tab.
     private VBox buildSummaryTab() {
         Label heading = new Label("Spending by Category");
         heading.getStyleClass().add("section-title");
@@ -216,6 +223,7 @@ public class FinanceTrackerFxApp extends Application {
         return tab;
     }
 
+    // Sets up the columns in the transaction table.
     private void configureTable() {
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
         table.setPlaceholder(new Label("No transactions yet."));
@@ -243,6 +251,7 @@ public class FinanceTrackerFxApp extends Application {
         table.setItems(tableItems);
     }
 
+    // Refreshes the table and all displayed totals.
     private void refreshAll() {
         tableItems.setAll(tracker.getAllTransactions());
         balanceValue.setText(money(tracker.getBalance()));
@@ -251,6 +260,7 @@ public class FinanceTrackerFxApp extends Application {
         refreshCategorySummary();
     }
 
+    // Updates the expense totals shown for each category.
     private void refreshCategorySummary() {
         categoryBox.getChildren().clear();
         Map<String, Double> expenses = tracker.getExpensesByCategory();
@@ -277,10 +287,12 @@ public class FinanceTrackerFxApp extends Application {
         }
     }
 
+    // Formats a number as money.
     private String money(double value) {
         return String.format("$%,.2f", value);
     }
 
+    // Loads saved transaction data when the app starts.
     private void loadData() {
         try {
             fileManager.loadInto(tracker);
@@ -289,6 +301,7 @@ public class FinanceTrackerFxApp extends Application {
         }
     }
 
+    // Saves transaction data to the CSV file.
     private void saveData() {
         try {
             fileManager.save(tracker.getAllTransactions());
@@ -298,10 +311,12 @@ public class FinanceTrackerFxApp extends Application {
     }
 
     @Override
+    // Saves the data when the app closes.
     public void stop() {
         saveData();
     }
 
+    // Launches the JavaFX application.
     public static void main(String[] args) {
         launch(args);
     }

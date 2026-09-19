@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+// Runs the console version of the finance tracker.
 public class Main {
 
     private static final String DATA_FILE = "data/transactions.csv";
@@ -14,6 +15,7 @@ public class Main {
     private static final FileManager fileManager = new FileManager(DATA_FILE);
     private static final Scanner scanner = new Scanner(System.in);
 
+    // Starts the program and handles the main menu.
     public static void main(String[] args) {
         try {
             fileManager.loadInto(tracker);
@@ -40,6 +42,7 @@ public class Main {
         saveAndExit();
     }
 
+    // Displays the available menu options.
     private static void printMenu() {
         System.out.println("\n1. Add income");
         System.out.println("2. Add expense");
@@ -50,6 +53,7 @@ public class Main {
         System.out.print("Choose an option: ");
     }
 
+    // Gets transaction information from the user and adds it.
     private static void addTransaction(TransactionType type) {
         System.out.print("Description: ");
         String description = scanner.nextLine();
@@ -84,6 +88,7 @@ public class Main {
         }
     }
 
+    // Displays every saved transaction.
     private static void listTransactions() {
         List<Transaction> all = tracker.getAllTransactions();
         if (all.isEmpty()) {
@@ -96,6 +101,7 @@ public class Main {
         }
     }
 
+    // Displays income, expenses, balance, and spending by category.
     private static void showSummary() {
         System.out.println("\n--- Summary ---");
         System.out.printf("Total income:   $%,.2f%n", tracker.getTotalIncome());
@@ -111,6 +117,7 @@ public class Main {
         }
     }
 
+    // Deletes a transaction using its ID.
     private static void deleteTransaction() {
         listTransactions();
         if (tracker.size() == 0) {
@@ -129,6 +136,7 @@ public class Main {
         }
     }
 
+    // Saves all data before the program closes.
     private static void saveAndExit() {
         try {
             fileManager.save(tracker.getAllTransactions());

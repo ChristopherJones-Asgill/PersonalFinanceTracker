@@ -2,6 +2,7 @@ package com.financetracker;
 
 import java.time.LocalDate;
 
+// Represents one income or expense transaction.
 public class Transaction {
 
     private final int id;
@@ -11,6 +12,7 @@ public class Transaction {
     private final double amount;
     private final TransactionType type;
 
+    // Creates a transaction with its basic information.
     public Transaction(int id, LocalDate date, String description, String category,
                         double amount, TransactionType type) {
         this.id = id;
@@ -45,10 +47,12 @@ public class Transaction {
         return type;
     }
 
+    // Returns income as positive and expenses as negative.
     public double getSignedAmount() {
         return type == TransactionType.INCOME ? amount : -amount;
     }
 
+    // Converts the transaction into a line that can be saved in a CSV file.
     public String toCsvLine() {
 
         String safeDescription = description.replace(",", ";");
@@ -57,6 +61,7 @@ public class Transaction {
                 safeCategory, String.valueOf(amount), type.name());
     }
 
+    // Creates a transaction from one line of the CSV file.
     public static Transaction fromCsvLine(String line) {
         String[] parts = line.split(",", -1);
         int id = Integer.parseInt(parts[0]);
@@ -68,6 +73,7 @@ public class Transaction {
         return new Transaction(id, date, description, category, amount, type);
     }
 
+    // Formats the transaction for display in the console.
     @Override
     public String toString() {
         String sign = type == TransactionType.INCOME ? "+" : "-";
